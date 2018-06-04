@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>user-provider-jmeter</artifactId>
+    <artifactId>all-service-consumer</artifactId>
 
     <dependencies>
         <dependency>
@@ -32,25 +32,24 @@
             <artifactId>zkclient</artifactId>
             <version>0.10</version>
         </dependency>
-        <!-- java jmeter依赖jar包 -->
-        <dependency>
-            <groupId>org.apache.jmeter</groupId>
-            <artifactId>ApacheJMeter_core</artifactId>
-            <version>3.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.jmeter</groupId>
-            <artifactId>ApacheJMeter_java</artifactId>
-            <version>3.2</version>
-        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.21</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>4.3.10.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.10</version>
+        </dependency>
     </dependencies>
     <build>
-        <finalName>user-provider-jmeter</finalName>
+        <finalName>all-service-consumer</finalName>
         <!-- 加载资源 -->
         <!-- copy resources 下面的资源 -->
         <resources>

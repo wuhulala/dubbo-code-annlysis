@@ -16,13 +16,16 @@ import java.io.IOException;
  * 开发人员: wuhulala<br>
  * 开发时间: 2018/5/8<br>
  */
-public class UserJmeterConsumer {
+public class UserConsumer {
 
     public static void main(String[] args) throws IOException {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 new String[]{"classpath:META-INF/spring/spring-context.xml"});
         context.start();
+        System.out.println("==============================初始化成功=================================================");
         UserService service = context.getBean(UserService.class);
+        System.out.println("==============================reference 初始化成功=================================================");
+
         User user = new User();
         user.setName("wuhulala");
         user.setAge(12);

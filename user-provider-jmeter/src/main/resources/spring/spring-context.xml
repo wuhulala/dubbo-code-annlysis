@@ -5,5 +5,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:application name="user-jmeter-consumer"/>
     <dubbo:registry address="multicast://224.5.6.7:1234"/>
+    <dubbo:consumer filter="callexception"/>
     <dubbo:reference id="demoService" interface="com.wuhulala.dubbo.user.service.UserService"/>
 </beans>

@@ -13,6 +13,9 @@
         <module>user-provider</module>
         <module>user-provider-jmeter</module>
         <module>common-api</module>
+        <module>common-core</module>
+        <module>all-service-consumer</module>
+        <module>dubbo-cat-monitor</module>
     </modules>
 
     <dependencies>

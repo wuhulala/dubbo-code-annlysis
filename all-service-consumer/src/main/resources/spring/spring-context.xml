@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <dubbo:application name="user-jmeter-consumer"/>
+    <dubbo:registry id="asRegistry" protocol="zookeeper" client="zkclient" register="true" address="zookeeper:2181"/>
+
+    <!-- 用dubbo协议在端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <dubbo:consumer filter="callexception"/>
+
+    <bean id="referenceCallInterceptor" class="com.wuhulala.common.dubbo.handler.InvokerInvocationHandlerInterceptor"/>
+
+    <aop:aspectj-autoproxy/>
+
+    <aop:config>
+        <aop:pointcut id="referenceCallPointcut" expression="execution(* com.alibaba.dubbo.rpc.proxy.InvokerInvocationHandler.invoke(..))"/>
+        <aop:pointcut id="adaptivePointcut" expression="execution(* com.alibaba.dubbo.common.extension.ProtocolAdaptive.*(..))"/>
+        <aop:advisor pointcut-ref="referenceCallPointcut" advice-ref="referenceCallInterceptor"/>
+        <aop:advisor pointcut-ref="adaptivePointcut" advice-ref="referenceCallInterceptor"/>
+    </aop:config>
+
+    <dubbo:reference mock="com.wuhulala.dubbo.user.UserServiceMock" id="demoService" interface="com.wuhulala.dubbo.user.service.UserService" retries="0" check="false" timeout="3000000" />
+</beans>

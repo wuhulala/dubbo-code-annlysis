@@ -11,7 +11,12 @@ import com.wuhulala.dubbo.user.pojo.User;
  * 开发时间: 2018/5/8<br>
  */
 public class UserResp extends BaseResp<User> {
+    public UserResp() {
+    }
 
+    public UserResp(String resultCode, String resultMsg) {
+        super(resultCode, resultMsg);
+    }
 
-    ///////////////////////////// 方法区 ////////////////////////////////////
+///////////////////////////// 方法区 ////////////////////////////////////
 }
