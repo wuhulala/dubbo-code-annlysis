@@ -20,9 +20,6 @@ public class CallExceptionFilter implements Filter {
 
         try {
             result = invoker.invoke(invocation);
-            if (result.hasException() && result.getValue() != null && result instanceof RpcResult) {
-
-            }
         }catch (RpcException e){
             String methodName = invocation.getMethodName();
             Class<?>[] parameterTypes = invocation.getParameterTypes();
@@ -44,9 +41,6 @@ public class CallExceptionFilter implements Filter {
                 ((RpcResult) result).setValue(resp);
             }
         }
-        // after filter ...
-
-
         return result;
     }
 }
