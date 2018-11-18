@@ -35,5 +35,7 @@ public class UserConsumer {
         userReq.setQuery(user);
         UserResp resp = service.saveUser(userReq);
         System.out.println(JSON.toJSONString(resp));
+        System.in.read();
+
     }
 }
