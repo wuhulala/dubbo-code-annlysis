@@ -23,7 +23,7 @@ public class UserConsumer {
                 new String[]{"classpath:META-INF/spring/spring-context.xml"});
         context.start();
         System.out.println("==============================初始化成功=================================================");
-        UserService service = context.getBean(UserService.class);
+        UserService service = (UserService) context.getBean("userService");
         System.out.println("==============================reference 初始化成功=================================================");
 
         User user = new User();
