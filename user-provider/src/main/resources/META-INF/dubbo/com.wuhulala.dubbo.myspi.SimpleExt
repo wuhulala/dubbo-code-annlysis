@@ -1,0 +1,4 @@
+filter=com.wuhulala.dubbo.myspi.SimplExtWrapper
+ext1=com.wuhulala.dubbo.myspi.SimpleExtImpl1
+ext2=com.wuhulala.dubbo.myspi.SimpleExtImpl2
+ext3=com.wuhulala.dubbo.myspi.SimpleExtImpl3

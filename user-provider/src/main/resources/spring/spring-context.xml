@@ -3,13 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-    <dubbo:application name="user-provider" />
-
+    <dubbo:application name="user-provider"/>
     <dubbo:registry id="asRegistry" client="zkclient" protocol="zookeeper" register="true" address="zookeeper:2181" file="D:/dubbo/user/dubbo.registry"/>
-
-    <dubbo:protocol name="dubbo" port="20880" dispatcher="all" threadpool="fixed" threads="2"/>
-    <dubbo:service  interface="com.wuhulala.dubbo.user.service.UserService" ref="demoService" registry="asRegistry"/>
-    <bean id="demoService" class="com.wuhulala.dubbo.user.service.impl.UserServiceImpl" />
+    <dubbo:protocol name="dubbo" port="20880" dispatcher="direct" threadpool="fixed" threads="2"/>
+    <dubbo:service connections="10" interface="com.wuhulala.dubbo.user.service.UserService" ref="demoService" registry="asRegistry"/>
+    <bean id="demoService" class="com.wuhulala.dubbo.user.service.impl.UserServiceImpl"/>
 </beans>
 
 <!--

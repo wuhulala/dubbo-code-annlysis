@@ -19,4 +19,14 @@ public class UserResp extends BaseResp<User> {
     }
 
 ///////////////////////////// 方法区 ////////////////////////////////////
+
+
+    @Override
+    public String toString() {
+        return "UserResp{" +
+                "resultCode='" + resultCode + '\'' +
+                ", resultMsg='" + resultMsg + '\'' +
+                ", cause='" + cause + '\'' +
+                '}';
+    }
 }

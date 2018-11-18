@@ -13,27 +13,25 @@ public class CallExceptionFilter implements Filter {
 
     private static final Logger logger = LoggerFactory.getLogger(CallExceptionFilter.class);
 
+    @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
-        Result result = null;
+        Result result = new RpcResult();
         Object resp = null;
 
         try {
             result = invoker.invoke(invocation);
-            if (result.hasException() && result.getValue() != null && result instanceof RpcResult) {
-
-            }
         }catch (RpcException e){
             String methodName = invocation.getMethodName();
             Class<?>[] parameterTypes = invocation.getParameterTypes();
             try {
                 Method method = invoker.getInterface().getMethod(methodName, parameterTypes);
                 Class<?> returnType = method.getReturnType();
-                if (returnType != null && returnType.isAssignableFrom(BaseResp.class)) {
+                if (returnType != null && BaseResp.class.isAssignableFrom(returnType)) {
                     Constructor constructor = returnType.getDeclaredConstructor();
                     if (constructor != null) {
                         resp = constructor.newInstance();
                         ((BaseResp) resp).setResultInfo("-1", e.getMessage());
-                        ((BaseResp) resp).setCause(result.getException().toString());
+                        ((BaseResp) resp).setCause(e.getCause().getLocalizedMessage());
                     }
                 }
             } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException oe) {
@@ -42,11 +40,7 @@ public class CallExceptionFilter implements Filter {
             if(resp != null){
                 ((RpcResult) result).setValue(resp);
             }
-            logger.error("asasdasd",e);
         }
-        // after filter ...
-
-
         return result;
     }
 }
