@@ -29,9 +29,11 @@ public class GenericReference {
         reference.setInterface("com.wuhulala.dubbo.user.service.MyGenericService");
         reference.setApplication(application);
         reference.setRegistry(registry);
+        reference.setCheck(false);
         //reference.setVersion("1.0.0");
         reference.setRetries(0);
         reference.setGeneric(true);
+        reference.setTimeout(1000000);
 
         GenericService genericService = reference.get();
 
