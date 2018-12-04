@@ -1,7 +1,5 @@
 package net.dubboclub.catmonitor;
 
-import com.dianping.cat.Cat;
-
 /**
  * Created by bieber on 2015/11/16.
  */
@@ -28,6 +26,6 @@ public class DubboCat {
      * @return
      */
     public static boolean isEnable(){
-        return Cat.getManager().isCatEnabled()&&isEnable;
+        return /*Cat.getManager().isCatEnabled()&&*/isEnable;
     }
 }

@@ -1,7 +1,3 @@
-import com.dianping.cat.Cat;
-import com.dianping.cat.message.Event;
-import com.dianping.cat.message.Transaction;
-
 /**
  * 功能说明: ${END}<br>
  * 注意事项: <br>
@@ -15,23 +11,23 @@ public class CatTest {
     ///////////////////////////// 方法区 ////////////////////////////////////
 
     public static void main(String[] args) throws InterruptedException {
-        String pageName = "";
-        String serverIp = "";
-
-        double amount = 0;
-        System.out.println(Cat.getCatHome());
-
-        Transaction transaction = Cat.newTransaction("TTTTT", pageName);
-        try {
-            Cat.logEvent("TTTTT.TS", serverIp, Event.SUCCESS, "ip=" + serverIp);
-            Cat.logMetricForCount("PayCount");
-            Cat.logMetricForSum("PayAmount", amount);
-            Thread.sleep(1000);
-            transaction.setStatus(Transaction.SUCCESS);
-        } catch (InterruptedException e) {
-            transaction.setStatus(e);
-        } finally {
-            transaction.complete();
-        }
+//        String pageName = "";
+//        String serverIp = "";
+//
+//        double amount = 0;
+//        System.out.println(Cat.getCatHome());
+//
+//        Transaction transaction = Cat.newTransaction("TTTTT", pageName);
+//        try {
+//            Cat.logEvent("TTTTT.TS", serverIp, Event.SUCCESS, "ip=" + serverIp);
+//            Cat.logMetricForCount("PayCount");
+//            Cat.logMetricForSum("PayAmount", amount);
+//            Thread.sleep(1000);
+//            transaction.setStatus(Transaction.SUCCESS);
+//        } catch (InterruptedException e) {
+//            transaction.setStatus(e);
+//        } finally {
+//            transaction.complete();
+//        }
     }
 }
