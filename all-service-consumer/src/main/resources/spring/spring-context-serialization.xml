@@ -9,18 +9,6 @@
     <!-- 用dubbo协议在端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="20880" serialization="fastjson" />
 
-    <dubbo:consumer filter="callexception"/>
-
-    <bean id="referenceCallInterceptor" class="com.wuhulala.common.dubbo.handler.InvokerInvocationHandlerInterceptor"/>
-
-    <aop:aspectj-autoproxy/>
-
-    <aop:config>
-        <aop:pointcut id="referenceCallPointcut" expression="execution(* com.alibaba.dubbo.rpc.proxy.InvokerInvocationHandler.invoke(..))"/>
-        <aop:pointcut id="adaptivePointcut" expression="execution(* com.alibaba.dubbo.common.extension.ProtocolAdaptive.*(..))"/>
-        <aop:advisor pointcut-ref="referenceCallPointcut" advice-ref="referenceCallInterceptor"/>
-        <aop:advisor pointcut-ref="adaptivePointcut" advice-ref="referenceCallInterceptor"/>
-    </aop:config>
 
     <dubbo:reference mock="com.wuhulala.dubbo.user.UserServiceMock" id="demoService" interface="com.wuhulala.dubbo.user.service.UserService" retries="0" check="false" timeout="3000000" />
 </beans>

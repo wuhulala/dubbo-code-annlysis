@@ -1,4 +1,4 @@
-package com.wuhulala.dubbo;
+package com.wuhulala.dubbo.sockettest;
 
 import com.alibaba.dubbo.common.io.Bytes;
 import com.alibaba.dubbo.common.logger.Logger;
@@ -88,6 +88,8 @@ public class SocketConnectDubbo {
                 out111.writeObject("world");
                 out111.writeObject(new HashMap<>());
                 out111.flushBuffer();
+
+
 
 
                 StringBuffer request = new StringBuffer(2048);
